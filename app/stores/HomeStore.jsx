@@ -37,11 +37,11 @@ export default class HomeStore extends EventEmitter {
     return this.list;
   }
 
-  addListener(cb) {
+  addEventListener(cb) {
     this.on('change', cb);
   }
 
-  removeListener(cb) {
+  removeEventListener(cb) {
     this.removeListener('change', cb);
   }
 

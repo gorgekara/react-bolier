@@ -17,18 +17,21 @@ export default class Home extends React.Component {
     };
   }
 
-  _onChange() {
+  onEventChange() {
+    // If component is unmounting do not set state
+    if (this._calledComponentWillUnmount) { return; }
+
     this.setState({
       items: this.homeStore.getAll()
-    })
+    });
   }
 
   componentDidMount() {
-    this.homeStore.addListener(this._onChange.bind(this));
+    this.homeStore.addEventListener(this.onEventChange.bind(this));
   }
 
   componentWillUnmount() {
-    this.homeStore.removeListener(this._onChange.bind(this));
+    this.homeStore.removeEventListener(this.onEventChange.bind(this));
   }
 
   addNewItem() {
