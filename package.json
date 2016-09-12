@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "watch": "webpack --progress --colors --watch"
+    "watch": "./node_modules/.bin/webpack-dev-server"
   },
   "keywords": [],
   "author": "",
@@ -24,6 +24,7 @@
     "react-router": "^2.8.0",
     "sass-loader": "^4.0.2",
     "style-loader": "^0.13.1",
-    "webpack": "^1.13.2"
+    "webpack": "^1.13.2",
+    "webpack-dev-server": "^1.15.1"
   }
 }
