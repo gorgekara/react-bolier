@@ -3,3 +3,20 @@
     font-size: 16px;
   }
 }
+
+.list-of-numbers {
+  padding: 0;
+
+  li {
+    padding: 0;
+    margin: 15px 0;
+    width: 100px;
+    display: block;
+    list-style: none;
+
+    .btn--remove {
+      border-radius: 50px;
+      float: right;
+    }
+  }
+}

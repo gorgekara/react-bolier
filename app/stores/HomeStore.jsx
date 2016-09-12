@@ -5,27 +5,31 @@ export default class HomeStore extends EventEmitter {
   constructor() {
     super();
 
-    this.list = [];
+    // Populate initial list with AJAX
+    this.list = [
+      7777,
+      6666
+    ];
 
     Dispatcher.register((payload) => {
       switch (payload.action) {
         case 'ADD_ITEM': 
           if (payload.data !== '') {
             this.addItem(payload.data);
-            this.emitChange();
+            this.emitChange(payload.action);
           }
           break;
         case 'REMOVE_ITEM': 
           if (payload.data !== '') {
             this.removeItem(payload.data);
-            this.emitChange();
+            this.emitChange(payload.action);
           }
           break;
       }
     });
   }
 
-  emitChange() {
+  emitChange(action) {
     this.emit('change');
   }
 
