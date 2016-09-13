@@ -1,16 +1,42 @@
 var webpack = require('webpack'),
     HtmlWebpackPlugin = require('html-webpack-plugin'),
-    HtmlWebpackConfig = new HtmlWebpackPlugin({
-      template: __dirname + '/app/index.html',
-      filename: 'index.html',
-      inject: 'body'
-    }),
-    UglifyPlugin = new webpack.optimize.UglifyJsPlugin({
-      compress: {
-        warnings: false
-      },
-      comments: false
-    });
+    LiveReloadPlugin = require('webpack-livereload-plugin'),
+    inProduction = process.env.NODE_ENV === 'production',
+    plugins = [],
+    LivePlugin,
+    HtmlWebpackConfig,
+    UglifyPlugin,
+    EnvPlugin;
+
+HtmlWebpackConfig = new HtmlWebpackPlugin({
+  template: __dirname + '/app/index.html',
+  filename: 'index.html',
+  inject: 'body'
+});
+
+UglifyPlugin = new webpack.optimize.UglifyJsPlugin({
+  compress: {
+    warnings: false
+  },
+  comments: false
+});
+
+EnvPlugin = new webpack.DefinePlugin({
+  'process.env': { 
+     NODE_ENV: JSON.stringify('production') 
+   }
+});
+
+LivePlugin = new LiveReloadPlugin();
+
+plugins.push(HtmlWebpackConfig);
+
+if (inProduction) {
+  plugins.push(UglifyPlugin);
+  plugins.push(EnvPlugin);
+} else {
+  plugins.push(LivePlugin);
+}
 
 module.exports = {
   entry: [
@@ -36,8 +62,5 @@ module.exports = {
     filename: 'bundle.js',
     path: __dirname + '/dist'
   },
-  plugins: [
-    HtmlWebpackConfig,
-    UglifyPlugin
-  ]
+  plugins: plugins
 };
