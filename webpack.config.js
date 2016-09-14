@@ -11,7 +11,8 @@ var webpack = require('webpack'),
 HtmlWebpackConfig = new HtmlWebpackPlugin({
   template: __dirname + '/app/index.html',
   filename: 'index.html',
-  inject: 'body'
+  inject: 'body',
+  production: isProduction
 });
 
 UglifyPlugin = new webpack.optimize.UglifyJsPlugin({
