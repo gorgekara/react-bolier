@@ -1,7 +1,7 @@
 var webpack = require('webpack'),
     HtmlWebpackPlugin = require('html-webpack-plugin'),
     LiveReloadPlugin = require('webpack-livereload-plugin'),
-    inProduction = process.env.NODE_ENV === 'production',
+    isProduction = process.env.NODE_ENV === 'production',
     plugins = [],
     LivePlugin,
     HtmlWebpackConfig,
@@ -31,7 +31,7 @@ LivePlugin = new LiveReloadPlugin();
 
 plugins.push(HtmlWebpackConfig);
 
-if (inProduction) {
+if (isProduction) {
   plugins.push(UglifyPlugin);
   plugins.push(EnvPlugin);
 } else {
