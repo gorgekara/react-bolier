@@ -1,17 +1,21 @@
 import Dispatcher from '../dispatcher.jsx';
 
 export default class HomeActions {
+  constructor() {
+    this.dispatcher = Dispatcher;
+  }
+
   addItem(item) {
-    Dispatcher.dispatch({
+    this.dispatcher.dispatch({
       action: 'ADD_ITEM',
-      data: item
+      data: item,
     });
   }
 
   removeItem(index) {
-    Dispatcher.dispatch({
+    this.dispatcher.dispatch({
       action: 'REMOVE_ITEM',
-      data: index
+      data: index,
     });
   }
 }

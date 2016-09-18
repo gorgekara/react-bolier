@@ -40,6 +40,11 @@ if (isProduction) {
 }
 
 module.exports = {
+  externals: {
+    'cheerio': 'window',
+    'react/lib/ExecutionEnvironment': true,
+    'react/lib/ReactContext': true
+  },
   entry: [
     __dirname + '/app/Index.jsx'
   ],
@@ -50,7 +55,7 @@ module.exports = {
         exclude: /(node_modules|bower_components)/,
         loader: 'babel-loader',
         query: {
-          presets: ['es2015', 'react']
+          presets: ['react', 'es2015', 'stage-0']
         }
       },
       {

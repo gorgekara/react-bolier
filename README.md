@@ -9,4 +9,17 @@ After installation run `npm run watch` to start watching the project (run in in 
 
 Webpack & webpack dev server are installed locally and are started when the commands above are run.
 
+## Tests
+
+React boiler is setup to run tests with [Mocha](https://mochajs.org/) and [Enzyme](http://airbnb.io/enzyme/). 
+Useful read: [Testing React Components with Enzyme and Mocha](https://semaphoreci.com/community/tutorials/testing-react-components-with-enzyme-and-mocha)
+
+## Styles
+
+Add your styles in each component folder and include them in your component like so:
+
+```javascript
+import './Home.scss';
+```
+
 *Please note: Boilerplate is still work in progress.*
